@@ -14,4 +14,4 @@ class Attribute(models.Model):
 class Property(models.Model):
     Index = models.AutoField(primary_key=True)
     Object = models.IntegerField(null=True, blank=True)
-    Attribute = models.IntegerField(null=True, blank=True)    
+    Attribute = models.IntegerField(null=True, blank=True, max_length=5)    
