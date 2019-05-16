@@ -1,11 +1,20 @@
 import requests
 import json
 from django.http import HttpResponse, JsonResponse
-
+from . import models, serializers
 
 # 대륙 목록을 반환하는 함수입니다.
 def getContinents(request):
-    return JsonResponse()
+    if '' = request.GET:
+        return HttpResponse(status=400)
+
+    params = request.GET['params'] # URL Parameter
+    try:
+        AllUsers = models.Object.objects.all()
+        serializer = serializers.ObjectSerializers(AllUsers, many=True)
+    except:
+        return HttpResponse(status=500)
+    return JsonResponse(data=serializer.data)
 
 # 특정 대륙과 관련된 정보를 반환하는 함수입니다.
 def getContinent(request, continent):
