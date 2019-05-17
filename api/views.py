@@ -8,13 +8,19 @@ def getContinents(request):
     if '' = request.GET:
         return HttpResponse(status=400)
 
-    params = request.GET['params'] # URL Parameter
     try:
-        AllUsers = models.Object.objects.all()
-        serializer = serializers.ObjectSerializers(AllUsers, many=True)
+        return JsonResponse(
+            data=
+                serializers.ObjectSerializers(
+                    models.Object.objects.all(),
+                    many=True
+                ).data
+            ,
+            safe=False,
+            json_dumps_params={'ensure_ascii': False}
+        )
     except:
         return HttpResponse(status=500)
-    return JsonResponse(data=serializer.data)
 
 # 특정 대륙과 관련된 정보를 반환하는 함수입니다.
 def getContinent(request, continent):
