@@ -40,13 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     'corsheaders',
-    'peristalsis'
-=======
     'peristalsis',
     'api'
->>>>>>> 0436abef1101fcaf5102a95425951e016623421a
 ]
 
 MIDDLEWARE = [
