@@ -3,18 +3,19 @@ from rest_framework import serializers
 from .models import Object, Attribute, Property
 
 class ObjectSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Object
-        fields = ('Name')
+    attribute = AttributeSerializer(many=True)
+    #def continent(): serializers customize
+    
+        class Meta:
+            model = Object
+            fields = ('Index','Type','Related','Name','attribute')
 
 class PropertySerializers(serializers.ModelSerializer):
-    Name = ObjectSerializer(many=True, read_only=True)
     class Meta:
         model = Property
-        fields = ('ObjectName')
+        fields = ('Index','Object','Attribute')
 
 class AttributeSerializers(serializers.ModelSerializer):
-    ObjectName = PropertySerializers(many=True, read_only=True)
     class Meta:
         model = Attribute
-        fields = ('ObjectName','value')
+        fields = ('Index','Value')
