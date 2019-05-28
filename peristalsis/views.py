@@ -16,7 +16,8 @@ def instagram(request):
     distilled = {}
 
     try:
-        undistilled = requests.get(URL).json()['graphql']['hashtag']['edge_hashtag_to_top_posts']['edges']
+        undistilled = requests.get(URL).json(
+        )['graphql']['hashtag']['edge_hashtag_to_top_posts']['edges']
         distilled = []
 
         for datum in undistilled:
@@ -49,10 +50,8 @@ def weather(request):
     try:
         undistilled = requests.get(URL).json()
         distilled = {
-            'weather': {
-                'icon': utils.formatByWeather(undistilled['weather'][0]['main']),
-                'text': undistilled['weather'][0]['description'],
-            },
+            'icon': utils.formatByWeather(undistilled['weather'][0]['main']),
+            'text': undistilled['weather'][0]['description'],
             'temperature': {
                 'min': utils.formatByTemperature(undistilled['main']['temp_min']),
                 'max': utils.formatByTemperature(undistilled['main']['temp_max']),
