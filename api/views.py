@@ -1,22 +1,17 @@
 import requests
 import json
 from django.http import HttpResponse, JsonResponse
-# from . import models, serializers
-
+from api.serializers import ObjectSerializers
+from api.models import Object, Property, Attribute
 # 대륙 목록을 반환하는 함수입니다.
 def getContinents(request):
     if '' == request.GET:
         return HttpResponse(status=400)
 
     try:
-        return JsonResponse(
-            data = serializers.ObjectSerializers(
-                models.Object.objects.all(),
-                many=True
-                ).data,
-            safe=False,
-            json_dumps_params={'ensure_ascii': False}
-        )
+        queryset = Object.objects.all()
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
     except:
         return HttpResponse(status=500)
 
@@ -24,16 +19,11 @@ def getContinents(request):
 def getContinent(request, continent):
     if '' == request.GET:
         return HttpResponse(status=400)
-    
+
     try:
-        return JsonResponse(
-            data =  serializers.ObjectSerializers(
-                models.Object.objects.all(),
-                many=True
-                ).data,
-            safe=False,
-            json_dumps_params={'ensure_ascii': False}
-        )
+        queryset = Object.objects.get(Name = continent)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
     except:
         return JsonResponse()
 
