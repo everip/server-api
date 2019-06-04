@@ -9,7 +9,7 @@ def getContinents(request):
         return HttpResponse(status=400)
 
     try:
-        queryset = Object.objects.all()
+        queryset = Object.objects.filter(Type = 0)
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
@@ -29,24 +29,71 @@ def getContinent(request, continent):
 
 # 특정 대륙에 속한 나라 목록을 반환하는 함수입니다.
 def getCountries(request, continent):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
 
+    try:
+        queryset = Object.objects.filter(Name = continent, Type = 1)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
 # 특정 나라와 관련된 정보를 반환하는 함수입니다.
 def getCountry(request, continent, country):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
+
+    try:
+        queryset = Object.objects.filter(Name = continent and cuntry)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
 
 # 특정 나라에 속한 도시 목록을 반환하는 함수입니다.
 def getCities(request, continent, country):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
+
+    try:
+        queryset = Object.objects.filter(Name = continent and country, Type = 2)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
 
 # 특정 도시와 관련된 정보를 반환하는 함수입니다.
 def getCity(request, continent, country, city):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
+
+    try:
+        queryset = Object.objects.filter(Name = continent and country and city)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
 
 # 특정 도시에 속한 관광지 목록을 반환하는 함수입니다.
 def getSights(request, continent, country, city):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
+
+    try:
+        queryset = Object.objects.filter(Name = continent and country and city, Type = 3)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
 
 # 특정 관광지와 관련된 정보를 반환하는 함수입니다.
 def getSight(request, continent, country, city, sight):
-    return JsonResponse()
+    if '' == request.GET:
+        return HttpResponse(status=400)
+
+    try:
+        queryset = Object.objects.filter(Name = continent and country and city and sight)
+        serializer = ObjectSerializers(queryset, many=True)
+        return HttpResponse(serializer.data)
+    except:
+        return JsonResponse()
