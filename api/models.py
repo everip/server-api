@@ -1,14 +1,16 @@
 from django.db import models
 # Create your models here.
 
+
 class Object(models.Model):
     Index = models.AutoField(primary_key=True)
     Type = models.IntegerField(null=True)
     Related = models.IntegerField(default=-1)
     Name = models.CharField(max_length=100)
-    
+
     def __str__(self):
         return self.Name
+
 
 class Attribute(models.Model):
     Index = models.AutoField(primary_key=True)
@@ -16,6 +18,7 @@ class Attribute(models.Model):
 
     def __str__(self):
         return self.Value
+
 
 class Property(models.Model):
     Index = models.AutoField(primary_key=True)
