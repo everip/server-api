@@ -1,6 +1,7 @@
 # api/serializers.py
 from rest_framework import serializers
 from .models import Object, Attribute, Property
+from rest_framework.renderers import JSONRenderer
 
 class AttributeSerializers(serializers.HyperlinkedModelSerializer):
     class Meta:

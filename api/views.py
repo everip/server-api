@@ -25,7 +25,7 @@ def getContinent(request, continent):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 
 # 특정 대륙에 속한 나라 목록을 반환하는 함수입니다.
 def getCountries(request, continent):
@@ -37,7 +37,7 @@ def getCountries(request, continent):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 # 특정 나라와 관련된 정보를 반환하는 함수입니다.
 def getCountry(request, continent, country):
     if '' == request.GET:
@@ -48,7 +48,7 @@ def getCountry(request, continent, country):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 
 # 특정 나라에 속한 도시 목록을 반환하는 함수입니다.
 def getCities(request, continent, country):
@@ -60,7 +60,7 @@ def getCities(request, continent, country):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 
 # 특정 도시와 관련된 정보를 반환하는 함수입니다.
 def getCity(request, continent, country, city):
@@ -72,7 +72,7 @@ def getCity(request, continent, country, city):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 
 # 특정 도시에 속한 관광지 목록을 반환하는 함수입니다.
 def getSights(request, continent, country, city):
@@ -84,7 +84,7 @@ def getSights(request, continent, country, city):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
 
 # 특정 관광지와 관련된 정보를 반환하는 함수입니다.
 def getSight(request, continent, country, city, sight):
@@ -96,4 +96,4 @@ def getSight(request, continent, country, city, sight):
         serializer = ObjectSerializers(queryset, many=True)
         return HttpResponse(serializer.data)
     except:
-        return JsonResponse()
+        return HttpResponse(status=500)
