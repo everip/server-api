@@ -7,7 +7,7 @@ urlpatterns = [
 
     path('<str:continent>/countries', views.getCountries),
     path('<str:continent>/<str:country>', views.getCountry),
-    
+
     path('<str:continent>/<str:country>/cities', views.getCities),
     path('<str:continent>/<str:country>/<str:city>', views.getCity),
 
