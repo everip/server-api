@@ -1,7 +1,7 @@
 import requests
 import json
 from django.http import HttpResponse, JsonResponse
-from api.serializers import ObjectSerializers
+from api.serializers import ObjectSerializers, AttributeSerializers, PropertySerializers
 from api.models import Object, Property, Attribute
 
 
@@ -11,7 +11,8 @@ def getContinents(request):
         return HttpResponse(status=400)
 
     try:
-        queryset = Object.objects.filter(Type = 0)
+        queryset = Object.objects.filter(Type=0)
+        print(queryset)
         serializer = ObjectSerializers(queryset, many=True)
         print(serializer.data)
         return JsonResponse(serializer.data,
@@ -28,7 +29,7 @@ def getContinent(request, continent):
         return HttpResponse(status=400)
 
     try:
-        queryset = Object.objects.get(Name=continent)
+        queryset = Object.objects.filter(Name=continent)
         serializer = ObjectSerializers(queryset, many=True)
         return JsonResponse(serializer.data,
             safe=False,

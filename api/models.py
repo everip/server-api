@@ -22,8 +22,6 @@ class Attribute(models.Model):
 
 class Property(models.Model):
     Index = models.AutoField(primary_key=True)
-    Object = models.ForeignKey(Object, on_delete=models.CASCADE)
-    Attribute = models.ForeignKey(Attribute, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.Object
+    Object = models.ForeignKey('Object', on_delete=models.CASCADE)
+    Attribute = models.ForeignKey('Attribute', on_delete=models.CASCADE, related_name='sub_attribute')
+    
